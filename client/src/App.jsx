@@ -4,38 +4,15 @@ import './App.css';
 const App = () => {
   const [tickets, setTickets] = useState(null);
   const [loading, setLoading] = useState(true);
-  
-  // Determine the base URL based on environment
-  const getBaseUrl = () => {
-    // In production, use the Vercel deployment URL
-    if (import.meta.env.PROD) {
-      return import.meta.env.VITE_VERCEL_URL;
-    }
-    // In development, use the API base URL from env
-    return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
-  };
-
-  const baseUrl = getBaseUrl();
-
-  // Add logging to debug environment variable
-  useEffect(() => {
-    console.log('Current Environment:', import.meta.env.MODE);
-    console.log('API Base URL:', baseUrl);
-    console.log('All env variables:', import.meta.env);
-  }, []);
+  const baseUrl = import.meta.env.VITE_VERCEL_API_BASE_URL || 'https://istanbullore-staging.onrender.com';
 
   const getStatus = async () => {
     try {
-      if (!baseUrl) {
-        console.error('API Base URL is not defined');
-        throw new Error('API Base URL is not configured');
-      }
       const res = await fetch(`${baseUrl}/api/raffle-status?userId=123`);
       const data = await res.json();
       setTickets(data.tickets);
       setLoading(false);
     } catch (err) {
-      console.error('Error fetching status:', err);
       setTickets('error');
       setLoading(false);
     }
@@ -78,19 +55,19 @@ const App = () => {
           <div className="main-grid">
             <div className="content-feed">
               <article className="fade-in-block story-card">
-                <h3 className="story-title">Whispers from Balat's Walls</h3>
+                <h3 className="story-title">Whispers from Balat’s Walls</h3>
                 <p className="story-text">
-                  Tucked within Balat's maze-like alleys, the walls do more than crumble—they speak.
+                  Tucked within Balat’s maze-like alleys, the walls do more than crumble—they speak.
                   Layers of graffiti and faded murals bleed into one another, each fragment echoing forgotten protests, clandestine loves, and timeless resilience.
-                  Under the soft haze of dusk, what appears to be decay is in fact a mural of memory—an ever-changing canvas of the city's soul.
+                  Under the soft haze of dusk, what appears to be decay is in fact a mural of memory—an ever-changing canvas of the city’s soul.
                 </p>
               </article>
               <article className="fade-in-block story-card">
                 <h3 className="story-title">The Midnight Simit Vendor</h3>
                 <p className="story-text">
-                  When Istanbul sleeps, he stirs—a lone vendor, cart glowing amber beneath Galata's watchful tower.
-                  Locals exchange quiet nods, tourists linger in curiosity. There's magic in his motion, ritual in his rhythm.
-                  The scent of toasted sesame trails behind him like a story passed down—freshly baked into the city's night air.
+                  When Istanbul sleeps, he stirs—a lone vendor, cart glowing amber beneath Galata’s watchful tower.
+                  Locals exchange quiet nods, tourists linger in curiosity. There’s magic in his motion, ritual in his rhythm.
+                  The scent of toasted sesame trails behind him like a story passed down—freshly baked into the city’s night air.
                 </p>
               </article>
             </div>
