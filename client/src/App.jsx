@@ -4,10 +4,22 @@ import './App.css';
 const App = () => {
   const [tickets, setTickets] = useState(null);
   const [loading, setLoading] = useState(true);
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+  
+  // Determine the base URL based on environment
+  const getBaseUrl = () => {
+    // In production, use the Vercel deployment URL
+    if (import.meta.env.PROD) {
+      return import.meta.env.VITE_VERCEL_URL;
+    }
+    // In development, use the API base URL from env
+    return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+  };
+
+  const baseUrl = getBaseUrl();
 
   // Add logging to debug environment variable
   useEffect(() => {
+    console.log('Current Environment:', import.meta.env.MODE);
     console.log('API Base URL:', baseUrl);
     console.log('All env variables:', import.meta.env);
   }, []);
