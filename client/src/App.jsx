@@ -4,8 +4,7 @@ import './App.css';
 const App = () => {
   const [tickets, setTickets] = useState(null);
   const [loading, setLoading] = useState(true);
-const baseUrl = "https://istanbullore-staging.onrender.com"
-// import.meta.env.REACT_APP_API_URL;
+  const baseUrl = process.env.REACT_APP_API_URL;
   const getStatus = async () => {
     try {
       const res = await fetch(`${baseUrl}/api/raffle-status?userId=123`);
