@@ -4,7 +4,7 @@ import './App.css';
 const App = () => {
   const [tickets, setTickets] = useState(null);
   const [loading, setLoading] = useState(true);
-const baseUrl = import.meta.env.API_BASE_URL;
+const baseUrl = import.meta.env.REACT_APP_API_URL;
   const getStatus = async () => {
     try {
       const res = await fetch(`${baseUrl}/api/raffle-status?userId=123`);
