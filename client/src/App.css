@@ -139,40 +139,49 @@
   background-size: cover;
 }
 
+/* Header container */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 80px; /* Fixed height prevents layout jump */
-  background-color: #fff;
+  height: 80px; /* Fixed height */
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
+/* Logo */
 .logo {
-  height: 60px;        /* fixed logo height */
+  height: 60px;
   width: auto;
-  transition: none;    /* prevent size animation on scroll */
+  transition: none; /* Prevent animation that causes shift */
 }
 
+/* Fix for mobile menu */
 .mobile-menu {
   position: absolute;
-  top: 80px;            /* Just below header (match .site-header height) */
+  top: 80px; /* Below fixed header */
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: white;
   padding: 1rem;
   z-index: 999;
-  border-top: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  display: none; /* By default hidden */
 }
 
 .menu-toggle {
-  z-index: 1001;        /* Keep menu toggle above other elements */
+  z-index: 1001; /* Ensure toggle button is above everything */
+}
+
+/* Mobile Menu Active State */
+.mobile-menu.open {
+  display: block;
 }
 
 body {
