@@ -139,6 +139,47 @@
   background-size: cover;
 }
 
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px; /* Fixed height prevents layout jump */
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 60px;        /* fixed logo height */
+  width: auto;
+  transition: none;    /* prevent size animation on scroll */
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 80px;            /* Just below header (match .site-header height) */
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 1rem;
+  z-index: 999;
+  border-top: 1px solid #ccc;
+}
+
+.menu-toggle {
+  z-index: 1001;        /* Keep menu toggle above other elements */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
 .icon-insta { background-image: url('/icons/instagram.svg'); }
 .icon-twitter { background-image: url('/icons/twitter.svg'); }
 .icon-fb { background-image: url('/icons/facebook.svg'); }
